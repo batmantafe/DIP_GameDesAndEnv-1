@@ -2,20 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level : MonoBehaviour
+public class Tunnel : MonoBehaviour
 {
-    public Rigidbody rb;
-
-    public float moveSpeed;
-
     public GameObject[] obstaclesArray;
     private int randomOb1, randomOb2, randomOb3, randomOb4;
 
     // Use this for initialization
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-
         RandomObstacles();
     }
 

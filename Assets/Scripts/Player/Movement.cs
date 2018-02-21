@@ -7,6 +7,8 @@ public class Movement : MonoBehaviour
     public Rigidbody rb;
     public float thrust;
 
+    public GameObject[] thrusterLights;
+
     private bool keyPressed;
 
     // Use this for initialization
@@ -31,29 +33,38 @@ public class Movement : MonoBehaviour
         {
             keyPressed = true;
             rb.AddForce(transform.up * thrust);
+            thrusterLights[2].SetActive(true);
         }
 
         if (Input.GetKey(KeyCode.S) && keyPressed == false)
         {
             keyPressed = true;
             rb.AddForce(-transform.up * thrust);
+            thrusterLights[0].SetActive(true);
         }
 
         if (Input.GetKey(KeyCode.A) && keyPressed == false)
         {
             keyPressed = true;
             rb.AddForce(-transform.right * thrust);
+            thrusterLights[1].SetActive(true);
         }
 
         if (Input.GetKey(KeyCode.D) && keyPressed == false)
         {
             keyPressed = true;
             rb.AddForce(transform.right * thrust);
+            thrusterLights[3].SetActive(true);
         }
 
         else
         {
             keyPressed = false;
+
+            //thrusterLights[0].SetActive(false);
+            thrusterLights[1].SetActive(false);
+            //thrusterLights[2].SetActive(false);
+            thrusterLights[3].SetActive(false);
         }
     }
 }
