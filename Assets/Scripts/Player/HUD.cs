@@ -8,6 +8,8 @@ public class HUD : MonoBehaviour
     public static float playerFuel;
     public GUIStyle FuelBarRed; // Player > HUD > FuelBarRed > Normal > Background
 
+    public GameObject exhaust;
+
     // Use this for initialization
     void Start()
     {
@@ -42,6 +44,23 @@ public class HUD : MonoBehaviour
         if (playerFuel <= 0)
         {
             playerFuel = 0;
+
+            exhaust.SetActive(false);
+        }
+
+        if (playerFuel > 0)
+        {
+            exhaust.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            playerFuel = playerFuel + 20f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            playerFuel = playerFuel - 20f;
         }
     }
 }
