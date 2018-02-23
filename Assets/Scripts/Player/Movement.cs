@@ -37,7 +37,8 @@ public class Movement : MonoBehaviour
     void Move()
     {
         // Player presses Up
-        if (Input.GetKey(KeyCode.W) && keyPressed == false && HUD.playerFuel > 0)
+        if ((Input.GetKey(KeyCode.W) && keyPressed == false && HUD.playerFuel > 0)
+            || (Input.GetKey(KeyCode.UpArrow) && keyPressed == false && HUD.playerFuel > 0))
         {
             keyPressed = true;
             rb.AddForce(transform.up * thrust);
@@ -47,13 +48,15 @@ public class Movement : MonoBehaviour
             FuelFunction();
         }
 
-        if (Input.GetKeyUp(KeyCode.W))
+        if (Input.GetKeyUp(KeyCode.W)
+            || Input.GetKeyUp(KeyCode.UpArrow))
         {
             topLight.GetComponent<Light>().enabled = false;
         }
 
         // Player presses Down
-        if (Input.GetKey(KeyCode.S) && keyPressed == false && HUD.playerFuel > 0)
+        if ((Input.GetKey(KeyCode.S) && keyPressed == false && HUD.playerFuel > 0)
+            || (Input.GetKey(KeyCode.DownArrow) && keyPressed == false && HUD.playerFuel > 0))
         {
             keyPressed = true;
             rb.AddForce(-transform.up * thrust);
@@ -63,13 +66,15 @@ public class Movement : MonoBehaviour
             FuelFunction();
         }
 
-        if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetKeyUp(KeyCode.S)
+            || Input.GetKeyUp(KeyCode.DownArrow))
         {
             botLight.GetComponent<Light>().enabled = false;
         }
 
         // Player presses Left
-        if (Input.GetKey(KeyCode.A) && keyPressed == false && HUD.playerFuel > 0)
+        if ((Input.GetKey(KeyCode.A) && keyPressed == false && HUD.playerFuel > 0)
+            || (Input.GetKey(KeyCode.LeftArrow) && keyPressed == false && HUD.playerFuel > 0))
         {
             keyPressed = true;
             rb.AddForce(-transform.right * thrust);
@@ -79,13 +84,15 @@ public class Movement : MonoBehaviour
             FuelFunction();
         }
 
-        if (Input.GetKeyUp(KeyCode.A))
+        if (Input.GetKeyUp(KeyCode.A)
+            || Input.GetKeyUp(KeyCode.LeftArrow))
         {
             leftLight.GetComponent<Light>().enabled = false;
         }
 
         // Player presses Right
-        if (Input.GetKey(KeyCode.D) && keyPressed == false && HUD.playerFuel > 0)
+        if ((Input.GetKey(KeyCode.D) && keyPressed == false && HUD.playerFuel > 0)
+            || (Input.GetKey(KeyCode.RightArrow) && keyPressed == false && HUD.playerFuel > 0))
         {
             keyPressed = true;
             rb.AddForce(transform.right * thrust);
@@ -95,7 +102,8 @@ public class Movement : MonoBehaviour
             FuelFunction();
         }
 
-        if (Input.GetKeyUp(KeyCode.D))
+        if (Input.GetKeyUp(KeyCode.D)
+            || Input.GetKeyUp(KeyCode.RightArrow))
         {
             rightLight.GetComponent<Light>().enabled = false;
         }
@@ -118,7 +126,7 @@ public class Movement : MonoBehaviour
     {
         HUD.playerFuel = HUD.playerFuel - (moveCost * Time.deltaTime);
 
-        // This is being done in HUD script
+        // This part is being done in HUD script
         /*if (HUD.playerFuel <= 0)
         {
             HUD.playerFuel = 0;
