@@ -7,10 +7,15 @@ public class Tunnel : MonoBehaviour
     public GameObject[] vertObArray, horzObArray;
     private int randomVertOb, randomHorzOb;
 
+    public GameObject[] tunnelLight;
+    private int randomLightInt;
+
     // Use this for initialization
     void Start()
     {
         RandomObstacles();
+
+        RandomLight();
     }
 
     // Update is called once per frame
@@ -29,5 +34,12 @@ public class Tunnel : MonoBehaviour
             vertObArray[randomVertOb].SetActive(true);
             horzObArray[randomHorzOb].SetActive(true);
         }
+    }
+
+    void RandomLight()
+    {
+        randomLightInt = Random.Range(0,4);
+
+        tunnelLight[randomLightInt].SetActive(true);
     }
 }
