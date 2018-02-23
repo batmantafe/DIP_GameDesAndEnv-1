@@ -18,7 +18,7 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        FuelCheck();
     }
 
     void OnGUI()
@@ -30,5 +30,18 @@ public class HUD : MonoBehaviour
         // Health Bar
         GUI.Box(new Rect(6f * scrW, 8.4f * scrH, 4 * scrW, 0.5f * scrH), ""); //
         GUI.Box(new Rect(6f * scrW, 8.4f * scrH, playerFuel * (4 * scrW) / playerFuelMax, 0.5f * scrH), "FUEL", FuelBarRed);
+    }
+
+    void FuelCheck()
+    {
+        if (playerFuel >= playerFuelMax)
+        {
+            playerFuel = playerFuelMax;
+        }
+
+        if (playerFuel <= 0)
+        {
+            playerFuel = 0;
+        }
     }
 }

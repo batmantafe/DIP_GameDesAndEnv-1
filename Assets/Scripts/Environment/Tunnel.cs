@@ -12,12 +12,17 @@ public class Tunnel : MonoBehaviour
 
     private int randomVertMove, randomHorzMove;
 
+    public GameObject[] fuelArray;
+    private int giveFuel, randomFuelInt;
+
     // Use this for initialization
     void Start()
     {
         RandomObstacles();
 
         RandomLight();
+
+        RandomFuel();
     }
 
     // Update is called once per frame
@@ -60,6 +65,18 @@ public class Tunnel : MonoBehaviour
         if (randomHorzMove == 1)
         {
             horzObArray[randomHorzOb].GetComponent<ObstacleMove>().enabled = true;
+        }
+    }
+
+    void RandomFuel()
+    {
+        giveFuel = Random.Range(0,4);
+
+        if (giveFuel == 1)
+        {
+            randomFuelInt = Random.Range(0,9);
+
+            fuelArray[randomFuelInt].SetActive(true);
         }
     }
 }

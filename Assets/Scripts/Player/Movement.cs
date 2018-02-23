@@ -116,9 +116,10 @@ public class Movement : MonoBehaviour
     {
         HUD.playerFuel = HUD.playerFuel - (moveCost * Time.deltaTime);
 
-        if (HUD.playerFuel <= 0)
+        // This is being done in HUD script
+        /*if (HUD.playerFuel <= 0)
         {
             HUD.playerFuel = 0;
-        }
+        }*/
     }
 }
