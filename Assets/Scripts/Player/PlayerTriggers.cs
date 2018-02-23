@@ -7,6 +7,8 @@ public class PlayerTriggers : MonoBehaviour
 {
     public float fuelAmount;
 
+    public GameObject explosion;
+
     // Use this for initialization
     void Start()
     {
@@ -23,6 +25,8 @@ public class PlayerTriggers : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Obstacle"))
         {
+            explosion.SetActive(true);
+
             SceneManager.LoadScene("Lose");
         }
 
