@@ -22,6 +22,8 @@ public class Movement : MonoBehaviour
         keyPressed = false;
 
         moveCost = 10;
+
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
