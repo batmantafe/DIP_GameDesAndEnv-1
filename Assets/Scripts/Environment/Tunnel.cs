@@ -10,6 +10,8 @@ public class Tunnel : MonoBehaviour
     public GameObject[] tunnelLight;
     private int randomLightInt;
 
+    private int randomVertMove, randomHorzMove;
+
     // Use this for initialization
     void Start()
     {
@@ -33,6 +35,8 @@ public class Tunnel : MonoBehaviour
 
             vertObArray[randomVertOb].SetActive(true);
             horzObArray[randomHorzOb].SetActive(true);
+
+            RandomObMovement();
         }
     }
 
@@ -41,5 +45,21 @@ public class Tunnel : MonoBehaviour
         randomLightInt = Random.Range(0,4);
 
         tunnelLight[randomLightInt].SetActive(true);
+    }
+
+    void RandomObMovement()
+    {
+        randomVertMove = Random.Range(0,4);
+        randomHorzMove = Random.Range(0,4);
+
+        if (randomVertMove == 1)
+        {
+            vertObArray[randomVertOb].GetComponent<ObstacleMove>().enabled = true;
+        }
+
+        if (randomHorzMove == 1)
+        {
+            horzObArray[randomHorzOb].GetComponent<ObstacleMove>().enabled = true;
+        }
     }
 }
