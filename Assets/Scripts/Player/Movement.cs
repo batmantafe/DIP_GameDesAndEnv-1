@@ -104,4 +104,12 @@ public class Movement : MonoBehaviour
             //SceneManager.LoadScene("Menu");
         }
     }
+
+    /*void OnColliderEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Obstacle"))
+        {
+            SceneManager.LoadScene("Lose");
+        }
+    }*/
 }
