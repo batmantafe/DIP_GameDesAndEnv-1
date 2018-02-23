@@ -8,18 +8,29 @@ public class Gun : MonoBehaviour
     public Transform bulletSpawn;
     public float bulletSpeed;
 
+    public float fireRate;
+    private bool hasFired = false;
+
     // Use this for initialization
     void Start()
     {
-        bulletSpeed = 5;
+        bulletSpeed = -30;
+
+        fireRate = 4;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        // For Testing
+        /*if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot();
+        }*/
+
+        if (hasFired == false)
+        {
+            StartCoroutine(FireShot());
         }
     }
 
@@ -27,6 +38,17 @@ public class Gun : MonoBehaviour
     {
         GameObject clone = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
 
-        clone.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletSpeed;
+        clone.GetComponent<Rigidbody>().velocity = new Vector3(0,0,bulletSpeed);
+    }
+
+    IEnumerator FireShot()
+    {
+        hasFired = true;
+
+        Shoot();
+
+        yield return new WaitForSeconds(fireRate);
+
+        hasFired = false;
     }
 }
