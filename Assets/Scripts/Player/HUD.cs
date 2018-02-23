@@ -28,7 +28,7 @@ public class HUD : MonoBehaviour
         float scrH = Screen.height / 9; // Dividing Screen Height into 9 parts, value of scrH = 1
 
         // Health Bar
-        GUI.Box(new Rect(6f * scrW, 8 * scrH, 4 * scrW, 0.5f * scrH), ""); //
-        GUI.Box(new Rect(6f * scrW, 8 * scrH, playerFuel * (4 * scrW) / playerFuelMax, 0.5f * scrH), "", FuelBarRed);
+        GUI.Box(new Rect(6f * scrW, 8.4f * scrH, 4 * scrW, 0.5f * scrH), ""); //
+        GUI.Box(new Rect(6f * scrW, 8.4f * scrH, playerFuel * (4 * scrW) / playerFuelMax, 0.5f * scrH), "FUEL", FuelBarRed);
     }
 }
