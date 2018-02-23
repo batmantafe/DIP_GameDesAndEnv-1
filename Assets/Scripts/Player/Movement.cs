@@ -12,12 +12,16 @@ public class Movement : MonoBehaviour
     
     private bool keyPressed;
 
+    public float moveCost;
+
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
 
         keyPressed = false;
+
+        moveCost = 10;
     }
 
     // Update is called once per frame
@@ -31,12 +35,14 @@ public class Movement : MonoBehaviour
     void Move()
     {
         // Player presses Up
-        if (Input.GetKey(KeyCode.W) && keyPressed == false)
+        if (Input.GetKey(KeyCode.W) && keyPressed == false && HUD.playerFuel > 0)
         {
             keyPressed = true;
             rb.AddForce(transform.up * thrust);
 
             topLight.GetComponent<Light>().enabled = true;
+
+            FuelFunction();
         }
 
         if (Input.GetKeyUp(KeyCode.W))
@@ -45,12 +51,14 @@ public class Movement : MonoBehaviour
         }
 
         // Player presses Down
-        if (Input.GetKey(KeyCode.S) && keyPressed == false)
+        if (Input.GetKey(KeyCode.S) && keyPressed == false && HUD.playerFuel > 0)
         {
             keyPressed = true;
             rb.AddForce(-transform.up * thrust);
 
             botLight.GetComponent<Light>().enabled = true;
+
+            FuelFunction();
         }
 
         if (Input.GetKeyUp(KeyCode.S))
@@ -59,12 +67,14 @@ public class Movement : MonoBehaviour
         }
 
         // Player presses Left
-        if (Input.GetKey(KeyCode.A) && keyPressed == false)
+        if (Input.GetKey(KeyCode.A) && keyPressed == false && HUD.playerFuel > 0)
         {
             keyPressed = true;
             rb.AddForce(-transform.right * thrust);
 
             leftLight.GetComponent<Light>().enabled = true;
+
+            FuelFunction();
         }
 
         if (Input.GetKeyUp(KeyCode.A))
@@ -73,12 +83,14 @@ public class Movement : MonoBehaviour
         }
 
         // Player presses Right
-        if (Input.GetKey(KeyCode.D) && keyPressed == false)
+        if (Input.GetKey(KeyCode.D) && keyPressed == false && HUD.playerFuel > 0)
         {
             keyPressed = true;
             rb.AddForce(transform.right * thrust);
 
             rightLight.GetComponent<Light>().enabled = true;
+
+            FuelFunction();
         }
 
         if (Input.GetKeyUp(KeyCode.D))
@@ -98,18 +110,15 @@ public class Movement : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
-
-        if (Input.GetKey(KeyCode.F1))
-        {
-            //SceneManager.LoadScene("Menu");
-        }
     }
 
-    /*void OnColliderEnter(Collision other)
+    void FuelFunction()
     {
-        if (other.gameObject.CompareTag("Obstacle"))
+        HUD.playerFuel = HUD.playerFuel - (moveCost * Time.deltaTime);
+
+        if (HUD.playerFuel <= 0)
         {
-            SceneManager.LoadScene("Lose");
+            HUD.playerFuel = 0;
         }
-    }*/
+    }
 }
