@@ -13,6 +13,8 @@ public class ObstacleMove : MonoBehaviour
     void Start()
     {
         obAtNav1 = false;
+
+        speed = Random.Range(3f, 5f);
     }
 
     // Update is called once per frame
