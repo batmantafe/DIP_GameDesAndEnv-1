@@ -8,7 +8,9 @@ public class Tunnel : MonoBehaviour
     private int randomVertOb, randomHorzOb;
 
     public GameObject[] tunnelLight;
+    public GameObject[] tunnelLightB;
     private int randomLightInt;
+    private int randomLightBInt;
 
     private int randomVertMove, randomHorzMove;
 
@@ -60,8 +62,10 @@ public class Tunnel : MonoBehaviour
     void RandomLight()
     {
         randomLightInt = Random.Range(0,4);
+        randomLightBInt = Random.Range(0,4);
 
         tunnelLight[randomLightInt].SetActive(true);
+        tunnelLightB[randomLightBInt].SetActive(true);
     }
 
     void RandomObMovement()
