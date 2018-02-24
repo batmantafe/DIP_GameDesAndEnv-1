@@ -14,6 +14,8 @@ public class Movement : MonoBehaviour
 
     public float moveCost;
 
+    public GameObject botRocket, topRocket, leftRocket, rightRocket;
+
     // Use this for initialization
     void Start()
     {
@@ -45,6 +47,8 @@ public class Movement : MonoBehaviour
 
             topLight.GetComponent<Light>().enabled = true;
 
+            botRocket.GetComponent<Light>().enabled = true;
+
             FuelFunction();
         }
 
@@ -52,6 +56,8 @@ public class Movement : MonoBehaviour
             || Input.GetKeyUp(KeyCode.UpArrow))
         {
             topLight.GetComponent<Light>().enabled = false;
+
+            botRocket.GetComponent<Light>().enabled = false;
         }
 
         // Player presses Down
@@ -63,6 +69,8 @@ public class Movement : MonoBehaviour
 
             botLight.GetComponent<Light>().enabled = true;
 
+            topRocket.GetComponent<Light>().enabled = true;
+
             FuelFunction();
         }
 
@@ -70,6 +78,8 @@ public class Movement : MonoBehaviour
             || Input.GetKeyUp(KeyCode.DownArrow))
         {
             botLight.GetComponent<Light>().enabled = false;
+
+            topRocket.GetComponent<Light>().enabled = false;
         }
 
         // Player presses Left
@@ -81,6 +91,8 @@ public class Movement : MonoBehaviour
 
             leftLight.GetComponent<Light>().enabled = true;
 
+            rightRocket.GetComponent<Light>().enabled = true;
+
             FuelFunction();
         }
 
@@ -88,6 +100,8 @@ public class Movement : MonoBehaviour
             || Input.GetKeyUp(KeyCode.LeftArrow))
         {
             leftLight.GetComponent<Light>().enabled = false;
+
+            rightRocket.GetComponent<Light>().enabled = false;
         }
 
         // Player presses Right
@@ -99,6 +113,8 @@ public class Movement : MonoBehaviour
 
             rightLight.GetComponent<Light>().enabled = true;
 
+            leftRocket.GetComponent<Light>().enabled = true;
+
             FuelFunction();
         }
 
@@ -106,6 +122,8 @@ public class Movement : MonoBehaviour
             || Input.GetKeyUp(KeyCode.RightArrow))
         {
             rightLight.GetComponent<Light>().enabled = false;
+
+            leftRocket.GetComponent<Light>().enabled = false;
         }
 
         else

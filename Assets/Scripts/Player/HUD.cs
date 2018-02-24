@@ -9,7 +9,7 @@ public class HUD : MonoBehaviour
     public static float playerFuel;
     public GUIStyle FuelBarStyle; // Player > HUD > FuelBarRed > Normal > Background
 
-    public GameObject exhaust;
+    public GameObject exhaust, topRocket, botRocket, leftRocket, rightRocket;
 
     public GUIStyle FuelBarFont;
     private Color fontPink;
@@ -63,11 +63,21 @@ public class HUD : MonoBehaviour
             playerFuel = 0;
 
             exhaust.SetActive(false);
+
+            topRocket.SetActive(false);
+            botRocket.SetActive(false);
+            rightRocket.SetActive(false);
+            leftRocket.SetActive(false);
         }
 
         if (playerFuel > 0)
         {
             exhaust.SetActive(true);
+
+            topRocket.SetActive(true);
+            botRocket.SetActive(true);
+            rightRocket.SetActive(true);
+            leftRocket.SetActive(true);
         }
 
         if (Input.GetKeyDown(KeyCode.F1))
