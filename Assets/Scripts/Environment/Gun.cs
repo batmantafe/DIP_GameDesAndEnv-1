@@ -14,7 +14,7 @@ public class Gun : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        bulletSpeed = -50;
+        bulletSpeed = -100;
 
         fireRate = Random.Range(2.5f, 3.5f);
     }
