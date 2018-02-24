@@ -11,23 +11,22 @@ public class Gun : MonoBehaviour
     public float fireRate;
     private bool hasFired = false;
 
+    public GameObject shotLight;
+    public float lightRate;
+
     // Use this for initialization
     void Start()
     {
         bulletSpeed = -100;
 
-        fireRate = Random.Range(2.5f, 3.5f);
+        fireRate = Random.Range(1f, 3f);
+
+        lightRate = 0.05f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // For Testing
-        /*if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Shoot();
-        }*/
-
         if (hasFired == false)
         {
             StartCoroutine(FireShot());
@@ -38,17 +37,28 @@ public class Gun : MonoBehaviour
     {
         GameObject clone = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
 
-        clone.GetComponent<Rigidbody>().velocity = new Vector3(0,0,bulletSpeed);
+        clone.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, bulletSpeed);
     }
 
     IEnumerator FireShot()
     {
         hasFired = true;
 
+        StartCoroutine(FireLight());
+
         Shoot();
 
         yield return new WaitForSeconds(fireRate);
 
         hasFired = false;
+    }
+
+    IEnumerator FireLight()
+    {
+        shotLight.SetActive(true);
+
+        yield return new WaitForSeconds(lightRate);
+
+        shotLight.SetActive(false);
     }
 }

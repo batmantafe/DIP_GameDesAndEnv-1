@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BulletLife : MonoBehaviour
 {
-    public GameObject laser, laserHit;
-    
     // Use this for initialization
     void Start()
     {
@@ -20,12 +18,6 @@ public class BulletLife : MonoBehaviour
 
     void OnTriggerEnter()
     {
-        laser.SetActive(false);
-        laserHit.SetActive(true);
-
-        if (laserHit.activeSelf == true)
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }
