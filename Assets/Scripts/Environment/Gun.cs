@@ -42,7 +42,7 @@ public class Gun : MonoBehaviour
     {
         hasFired = true;
 
-        fireRate = Random.Range(0.8f, 1.2f);
+        fireRate = Random.Range(0.5f, 1.5f);
 
         StartCoroutine(FireLight());
 
