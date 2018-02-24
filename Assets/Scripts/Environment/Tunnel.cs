@@ -35,7 +35,7 @@ public class Tunnel : MonoBehaviour
     {
         if (!gameObject.CompareTag("Start"))
         {
-            randomVertOb = Random.Range(0, 3);
+            randomVertOb = Random.Range(0, 7);
             randomHorzOb = Random.Range(0, 3);
 
             vertObArray[randomVertOb].SetActive(true);
@@ -59,7 +59,10 @@ public class Tunnel : MonoBehaviour
 
         if (randomVertMove == 1)
         {
-            vertObArray[randomVertOb].GetComponent<ObstacleMove>().enabled = true;
+            if (!vertObArray[randomVertOb].name.Contains("Gun"))
+            {
+                vertObArray[randomVertOb].GetComponent<ObstacleMove>().enabled = true;
+            }
         }
 
         if (randomHorzMove == 1)

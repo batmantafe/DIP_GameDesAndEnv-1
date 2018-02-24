@@ -16,7 +16,7 @@ public class Gun : MonoBehaviour
     {
         bulletSpeed = -30;
 
-        fireRate = 4;
+        fireRate = Random.Range(2.5f, 3.5f);
     }
 
     // Update is called once per frame
