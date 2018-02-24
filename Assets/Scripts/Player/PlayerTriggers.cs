@@ -36,5 +36,10 @@ public class PlayerTriggers : MonoBehaviour
 
             HUD.playerFuel = HUD.playerFuel + fuelAmount;
         }
+
+        if (other.gameObject.CompareTag("End"))
+        {
+            SceneManager.LoadScene("Win");
+        }
     }
 }
