@@ -15,6 +15,8 @@ public class Tunnel : MonoBehaviour
     public GameObject[] fuelArray;
     private int giveFuel, randomFuelInt;
 
+    public Material transpMat;
+
     // Use this for initialization
     void Start()
     {
@@ -42,6 +44,16 @@ public class Tunnel : MonoBehaviour
             horzObArray[randomHorzOb].SetActive(true);
 
             RandomObMovement();
+
+            if (randomVertOb == 1)
+            {
+                vertObArray[randomVertOb].GetComponent<Renderer>().material = transpMat;
+            }
+
+            if (randomHorzOb == 1)
+            {
+                horzObArray[randomHorzOb].GetComponent<Renderer>().material = transpMat;
+            }
         }
     }
 
@@ -62,12 +74,16 @@ public class Tunnel : MonoBehaviour
             if (!vertObArray[randomVertOb].name.Contains("Gun"))
             {
                 vertObArray[randomVertOb].GetComponent<ObstacleMove>().enabled = true;
+
+                vertObArray[randomVertOb].GetComponent<Renderer>().material = transpMat;
             }
         }
 
         if (randomHorzMove == 1)
         {
             horzObArray[randomHorzOb].GetComponent<ObstacleMove>().enabled = true;
+
+            horzObArray[randomHorzOb].GetComponent<Renderer>().material = transpMat;
         }
     }
 
