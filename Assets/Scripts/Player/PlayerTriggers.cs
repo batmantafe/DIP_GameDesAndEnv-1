@@ -43,5 +43,10 @@ public class PlayerTriggers : MonoBehaviour
 
             SceneManager.LoadScene("Win");
         }
+
+        if (other.gameObject.CompareTag("Boundary"))
+        {
+            SceneManager.LoadScene("Lose");
+        }
     }
 }
