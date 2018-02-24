@@ -7,7 +7,7 @@ public class PlayerTriggers : MonoBehaviour
 {
     public float fuelAmount;
 
-    public GameObject explosion;
+    public GameObject explosion, coreHit;
 
     // Use this for initialization
     void Start()
@@ -39,6 +39,8 @@ public class PlayerTriggers : MonoBehaviour
 
         if (other.gameObject.CompareTag("End"))
         {
+            coreHit.SetActive(true);
+
             SceneManager.LoadScene("Win");
         }
     }

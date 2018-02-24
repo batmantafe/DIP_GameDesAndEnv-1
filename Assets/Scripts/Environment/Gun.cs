@@ -19,8 +19,6 @@ public class Gun : MonoBehaviour
     {
         bulletSpeed = -100;
 
-        fireRate = Random.Range(1f, 3f);
-
         lightRate = 0.05f;
     }
 
@@ -43,6 +41,8 @@ public class Gun : MonoBehaviour
     IEnumerator FireShot()
     {
         hasFired = true;
+
+        fireRate = Random.Range(0.8f, 1.2f);
 
         StartCoroutine(FireLight());
 

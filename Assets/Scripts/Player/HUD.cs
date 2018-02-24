@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
     public float playerFuelMax;
     public static float playerFuel;
-    public GUIStyle FuelBarRed; // Player > HUD > FuelBarRed > Normal > Background
+    public GUIStyle FuelBarStyle; // Player > HUD > FuelBarRed > Normal > Background
 
     public GameObject exhaust;
+
+    public GUIStyle FuelBarFont;
+    private Color fontPink;
 
     // Use this for initialization
     void Start()
@@ -25,13 +29,26 @@ public class HUD : MonoBehaviour
 
     void OnGUI()
     {
-
         float scrW = Screen.width / 16; // Dividing Screen Width into 16 parts, value of scrW = 1
         float scrH = Screen.height / 9; // Dividing Screen Height into 9 parts, value of scrH = 1
 
         // Health Bar
         GUI.Box(new Rect(6f * scrW, 8.4f * scrH, 4 * scrW, 0.5f * scrH), ""); //
-        GUI.Box(new Rect(6f * scrW, 8.4f * scrH, playerFuel * (4 * scrW) / playerFuelMax, 0.5f * scrH), "FUEL", FuelBarRed);
+        GUI.Box(new Rect(6f * scrW, 8.4f * scrH, playerFuel * (4 * scrW) / playerFuelMax, 0.5f * scrH), "", FuelBarStyle);
+
+        // "Fuel" Text
+        fontPink = new Color(255,174,201);
+        FuelBarFont.normal.textColor = fontPink;
+        FuelBarFont.fontSize = 20;
+        GUI.Label(new Rect(7f * scrW, 8.45f * scrH, 2 * scrW, 0.5f * scrH), "Fuel", FuelBarFont);
+
+        //GUI.Label(new Rect(8f * scrW, 8.5f * scrH, 2 * scrW, 0.5f * scrH), "LOW", FuelBarFont);
+
+        // "Low" Text
+        if (playerFuel <= 33)
+        {
+            GUI.Label(new Rect(7f * scrW, 8.65f * scrH, 2 * scrW, 0.5f * scrH), "LOW", FuelBarFont);
+        }
     }
 
     void FuelCheck()
