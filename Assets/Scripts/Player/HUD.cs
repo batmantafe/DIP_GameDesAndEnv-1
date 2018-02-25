@@ -40,14 +40,21 @@ public class HUD : MonoBehaviour
         fontPink = new Color(255,174,201);
         FuelBarFont.normal.textColor = fontPink;
         FuelBarFont.fontSize = 20;
-        GUI.Label(new Rect(7f * scrW, 8.45f * scrH, 2 * scrW, 0.5f * scrH), "Fuel", FuelBarFont);
 
-        //GUI.Label(new Rect(8f * scrW, 8.5f * scrH, 2 * scrW, 0.5f * scrH), "LOW", FuelBarFont);
+        if (playerFuel > 0)
+        {
+            GUI.Label(new Rect(6.9f * scrW, 8.45f * scrH, 2 * scrW, 0.5f * scrH), "FUEL", FuelBarFont);
+        }
 
         // "Low" Text
-        if (playerFuel <= 33)
+        if (playerFuel <= 33 && playerFuel > 0)
         {
-            GUI.Label(new Rect(7f * scrW, 8.65f * scrH, 2 * scrW, 0.5f * scrH), "LOW", FuelBarFont);
+            GUI.Label(new Rect(6.9f * scrW, 8.65f * scrH, 2 * scrW, 0.5f * scrH), "LOW", FuelBarFont);
+        }
+
+        if (playerFuel <= 0)
+        {
+            GUI.Label(new Rect(6.9f * scrW, 8.55f * scrH, 2 * scrW, 0.5f * scrH), "NO FUEL", FuelBarFont);
         }
     }
 
