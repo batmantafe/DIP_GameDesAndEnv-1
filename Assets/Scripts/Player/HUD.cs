@@ -8,6 +8,7 @@ public class HUD : MonoBehaviour
     public float playerFuelMax;
     public static float playerFuel;
     public GUIStyle FuelBarStyle; // Player > HUD > FuelBarRed > Normal > Background
+    public GUIStyle fuelBarBackStyle;
 
     public GameObject exhaust, topRocket, botRocket, leftRocket, rightRocket;
 
@@ -33,7 +34,7 @@ public class HUD : MonoBehaviour
         float scrH = Screen.height / 9; // Dividing Screen Height into 9 parts, value of scrH = 1
 
         // Health Bar
-        GUI.Box(new Rect(6f * scrW, 8.4f * scrH, 4 * scrW, 0.5f * scrH), ""); //
+        GUI.Box(new Rect(5.9f * scrW, 8.3f * scrH, 4.2f * scrW, 0.7f * scrH), "", fuelBarBackStyle); //
         GUI.Box(new Rect(6f * scrW, 8.4f * scrH, playerFuel * (4 * scrW) / playerFuelMax, 0.5f * scrH), "", FuelBarStyle);
 
         // "Fuel" Text
